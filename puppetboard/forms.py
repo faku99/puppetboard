@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 from collections import OrderedDict
 
 from flask_wtf import FlaskForm
-from wtforms import (BooleanField, SelectField, TextAreaField, validators)
+from wtforms import (BooleanField, HiddenField, PasswordField, RadioField,
+    SelectField, StringField, TextAreaField, validators)
 
 from puppetboard.core import get_app
 
@@ -37,3 +38,10 @@ class QueryForm(FlaskForm):
         (key, value) for key, value in QUERY_ENDPOINTS.items()
         if key in ENABLED_QUERY_ENDPOINTS], default='pql')
     rawjson = BooleanField('Raw JSON')
+
+
+class LoginForm(FlaskForm):
+    """The form used to login to Puppetboard"""
+    username = StringField('Username', [validators.DataRequired(message='Username is required')])
+    password = PasswordField('Password', [validators.DataRequired(message='Password is required')])
+    remember = BooleanField('Remember me')

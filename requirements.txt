@@ -8,3 +8,5 @@ itsdangerous >=1.1.0
 pypuppetdb >=2.1.0
 requests >=2.22.0
 CommonMark==0.9.1
+Flask-Login >=0.4.1
+Flask-SQLAlchemy >=2.3.2
